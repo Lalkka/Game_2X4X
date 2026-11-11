@@ -25,9 +25,7 @@ namespace Game_2X4X
         {
             Console.Clear();
 
-            int Item = 0;
-            int MapHeight = 10;
-            int MapWidth = 20;
+            int Item = 0, MapHeight = 15, MapWidth = 20;
             int[,] Map = new int[MapHeight, MapWidth];
             Random Random = new Random();
 
@@ -47,9 +45,9 @@ namespace Game_2X4X
                     else Map[y, x] = 0;
                 }
             }
+
             Map[1, 1] = 0;
 
-            
             for (int y = 0; y < MapHeight; y++)
             {
                 for (int x = 0; x < MapWidth; x++)
@@ -92,19 +90,18 @@ namespace Game_2X4X
                 if (Map[NextY, NextX] != 1)
                 {
                     Console.SetCursorPosition(O.PosX, O.PosY);
-                    Console.Write(" "); // Стираем старый след
+                    Console.Write(" "); 
 
                     O.PosX = NextX;
                     O.PosY = NextY;
 
-                    // Если наступили на ресурс
                     if (Map[O.PosY, O.PosX] == 2)
                     {
                         Map[O.PosY, O.PosX] = 0;
                         Console.SetCursorPosition(0, MapHeight + 3);
                         Console.ForegroundColor = ConsoleColor.Cyan;
-                        Console.Write("Вы нашли ресурсы!                ");
-                        Console.ResetColor();
+                        Console.Write("Вы нашли ресурс!");
+                        Console.ResetColor(); //доделать позже счетчик очков
                     }
 
                     O.DrawPlayer();
@@ -141,7 +138,7 @@ namespace Game_2X4X
                 AidKit = 5, Bandage = 3, Knife = 5, Machete = 7, Axe = 5,
                 Bag = 10, BigBag = 20,
                 Item = 0;
-
+                //Докурутить очень много чего, счетчик, рандомайзер на предметы через help базу данных что выше сделал в нормальный вид приведи а то всё в цифрах
                 bool IsAlive = true;
                 while (IsAlive)
                 {
